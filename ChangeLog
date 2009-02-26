@@ -1,3 +1,7 @@
+0.61.4
+------
+1. Make squared scrollview appearance consistent when round is set to none.
+
 0.61.3
 ------
 1. Allow QtCurve's colours to be overriden if the style name
