@@ -3338,13 +3338,13 @@ debugDisplayWidget(widget, 3);
                 drawFadedLine(cr, cx + (rev ? ind_width+QT_STYLE->xthickness
                                             : (cwidth - ind_width - QT_STYLE->xthickness)),
                                   cy + QT_STYLE->ythickness-1, 1, cheight-3,
-                             &btn_colors[darkLine], area, NULL, TRUE, TRUE, FALSE);
+                              &btn_colors[darkLine], area, NULL, TRUE, TRUE, FALSE);
 
                 if(!sunken)
-                    drawFadedLine(cr, cx + 1 + (rev ? ind_width+QT_STYLE->xthickness
-                                                    : (cwidth - ind_width - QT_STYLE->xthickness)),
+                    drawFadedLine(cr, cx + (rev ? ind_width+QT_STYLE->xthickness
+                                                : (cwidth - ind_width - QT_STYLE->xthickness))+1,
                                       cy + QT_STYLE->ythickness-1, 1, cheight-3,
-                                 &btn_colors[0], area, NULL, TRUE, TRUE, FALSE);
+                                  &btn_colors[0], area, NULL, TRUE, TRUE, FALSE);
             }
             else if((button || togglebutton) && (combo || combo_entry))
             {
@@ -3368,7 +3368,7 @@ debugDisplayWidget(widget, 3);
                                   &btn_colors[darkLine], area, NULL, TRUE, TRUE, FALSE);
 
                     if(!sunken)
-                        drawFadedLine(cr, vx+1+(rev ? LARGE_ARR_WIDTH+4 : 0), y+4, 1, height-8,
+                        drawFadedLine(cr, vx+(rev ? LARGE_ARR_WIDTH+4 : 0)+1, y+4, 1, height-8,
                                       &btn_colors[0], area, NULL, TRUE, TRUE, FALSE);
                 }
             }
@@ -5769,7 +5769,7 @@ static void gtkDrawFocus(GtkStyle *style, GdkWindow *window, GtkStateType state,
     gboolean doEtch=QTC_DO_EFFECT,
              btn=false,
              comboButton=false,
-             rev=reverseLayout(widget->parent);
+             rev=widget && reverseLayout(widget->parent);
 
     if(opts.comboSplitter && FOCUS_FILLED!=opts.focus && isComboBox(widget))
     {
